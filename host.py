@@ -1,4 +1,4 @@
-import spacy
+"""import spacy
 
 # Load the spaCy English language model
 nlp = spacy.load("en_core_web_sm")
@@ -39,3 +39,24 @@ if recognized_intent:
     print(f"Intent: {recognized_intent}")
 else:
     print("Intent not recognized.")
+    """
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Define intent recognition functions here
+
+@app.route('/recognize_intent', methods=['POST'])
+def handle_intent_recognition():
+    data = request.json
+    text = data.get('text')
+
+    # Perform intent recognition here
+    recognized_intent = your_intent_recognition_function(text)
+
+    return jsonify({'intent': recognized_intent})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+
